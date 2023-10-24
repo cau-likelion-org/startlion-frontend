@@ -1,7 +1,7 @@
 REPOSITORY=/home/ubuntu/deploy
 
-cd $REPOSITORY
+cd $REPOSITORY 
 
 sudo yarn install
 
-yarn deploy
+sudo pm2 reload all

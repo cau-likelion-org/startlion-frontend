@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import FirstSection from "@/components/landing/FirstSection";
 import SecondSection from "@/components/landing/SecondSection";
 import ThirdSection from "@/components/landing/ThirdSection";
+import FourthSection from "@/components/landing/FourthSection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,7 +62,9 @@ export default function Home() {
       <FrameBox>
         <ThirdSection />
       </FrameBox>
-      <FrameBox>파트별 소개</FrameBox>
+      <FrameBox>
+        <FourthSection />
+      </FrameBox>
       <FrameBox>수료 기준</FrameBox>
     </MainFrame>
   );

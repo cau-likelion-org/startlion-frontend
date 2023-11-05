@@ -5,54 +5,56 @@ import notebook from "@/img/notebooklion.png";
 
 const SecondSection = () => {
   return (
-    <div className="flex-col-base w-[1207px] gap-[60px]">
-      <IntroduceTextBox>
-        <div className="font-bold text-black text-xl">
-          중앙대학교 멋쟁이 사자처럼은 중앙대 학생들로 이루어진 IT 창업 동아리
-          입니다.
-        </div>
-        <br />
-        <div>
-          테크 기반의 아이디어를 실현하기 위해
+    <div className="py-[154px]">
+      <div className="flex-col-base w-[1207px] gap-[60px]">
+        <IntroduceTextBox>
+          <div className="font-bold text-black text-xl">
+            중앙대학교 멋쟁이 사자처럼은 중앙대 학생들로 이루어진 IT 창업 동아리
+            입니다.
+          </div>
           <br />
-          기획, 디자인, 개발 트랙 간의 끊임없는 소통을 추구하며
-          <br />
-          다양한 프로젝트 활동을 통해 기술적 성장을 도모하고 협력 역량을
-          끌어올립니다.
-        </div>
-      </IntroduceTextBox>
-      <NumberInfoWrapper>
-        <Image src={notebook} alt="노트북라이언" width={129} height={131} />
-        <div className="flex">
-          <NumberInfo>
-            <div className="title">since</div>
-            <div className="flex">
-              <div className="number">20nn</div>
-            </div>
-          </NumberInfo>
-          <NumberInfo>
-            <div className="title">활동 기수</div>
-            <div className="wrapper">
-              <div className="number">12</div>
-              <div className="semitext">기</div>
-            </div>
-          </NumberInfo>
-          <NumberInfo>
-            <div className="title">역대 활동 인원</div>
-            <div className="wrapper">
-              <div className="number">324</div>
-              <div className="semitext">명</div>
-            </div>
-          </NumberInfo>
-          <NumberInfo>
-            <div className="title">총 프로젝트 진행</div>
-            <div className="wrapper">
-              <div className="number">324</div>
-              <div className="semitext">개</div>
-            </div>
-          </NumberInfo>
-        </div>
-      </NumberInfoWrapper>
+          <div>
+            테크 기반의 아이디어를 실현하기 위해
+            <br />
+            기획, 디자인, 개발 트랙 간의 끊임없는 소통을 추구하며
+            <br />
+            다양한 프로젝트 활동을 통해 기술적 성장을 도모하고 협력 역량을
+            끌어올립니다.
+          </div>
+        </IntroduceTextBox>
+        <NumberInfoWrapper>
+          <Image src={notebook} alt="노트북라이언" width={129} height={131} />
+          <div className="flex">
+            <NumberInfo>
+              <div className="title">since</div>
+              <div className="flex">
+                <div className="number">20nn</div>
+              </div>
+            </NumberInfo>
+            <NumberInfo>
+              <div className="title">활동 기수</div>
+              <div className="wrapper">
+                <div className="number">12</div>
+                <div className="semitext">기</div>
+              </div>
+            </NumberInfo>
+            <NumberInfo>
+              <div className="title">역대 활동 인원</div>
+              <div className="wrapper">
+                <div className="number">324</div>
+                <div className="semitext">명</div>
+              </div>
+            </NumberInfo>
+            <NumberInfo>
+              <div className="title">총 프로젝트 진행</div>
+              <div className="wrapper">
+                <div className="number">324</div>
+                <div className="semitext">개</div>
+              </div>
+            </NumberInfo>
+          </div>
+        </NumberInfoWrapper>
+      </div>
     </div>
   );
 };

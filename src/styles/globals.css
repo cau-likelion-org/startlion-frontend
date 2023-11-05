@@ -6,6 +6,9 @@
   .flex-col-base {
     @apply flex justify-center items-center flex-col;
   }
+  .flex-base {
+    @apply flex justify-center items-center;
+  }
 }
 
 /* :root {

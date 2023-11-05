@@ -1,7 +1,7 @@
 import React from "react";
 
 const index = () => {
-  return <div>FAQ파트</div>;
+  return <div>인터뷰 페이지</div>;
 };
 
 export default index;

@@ -49,7 +49,7 @@ const ThirdSection = () => {
 
 export default ThirdSection;
 
-const ProcessFrame = styled.div(() => [
+export const ProcessFrame = styled.div(() => [
   tw`flex justify-between items-center w-full`,
   css`
     .item {
@@ -76,6 +76,20 @@ const ProcessFrame = styled.div(() => [
       font-size: 16px;
       font-weight: 400;
       width: 180px;
+    }
+    .schedule {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 196px;
+      height: 196px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 150%;
+      text-align: center;
+      color: #1b00fd;
+      border: 1px solid #1b00fd;
     }
   `,
 ]);

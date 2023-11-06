@@ -5,8 +5,10 @@ import Design from "@/img/DesignLion.png";
 import BE from "@/img/BELion.png";
 import FE from "@/img/FELion.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const FourthSection = () => {
+  const router = useRouter();
   return (
     <div className="px-[100px]">
       <div className="flex-col-base">
@@ -14,7 +16,7 @@ const FourthSection = () => {
           파트별 소개
         </div>
         <div className=" flex flex-wrap w-[1058px] h-[513px] gap-x-[34px] gap-y-[33px]">
-          <PartButton>
+          <PartButton onClick={() => router.push("/part/PM")}>
             <Image src={PM} alt="PMLion" width={464} height={92} />
             <TextPart>
               <div className="line"></div>
@@ -23,7 +25,7 @@ const FourthSection = () => {
               적당할 것 가탕요. 우헤헤헤
             </TextPart>
           </PartButton>
-          <PartButton>
+          <PartButton onClick={() => router.push("/part/DESIGN")}>
             <Image src={Design} alt="DesignLion" width={464} height={92} />
             <TextPart>
               <div className="line"></div>
@@ -32,7 +34,7 @@ const FourthSection = () => {
               적당할 것 가탕요. 우헤헤헤
             </TextPart>
           </PartButton>
-          <PartButton>
+          <PartButton onClick={() => router.push("/part/FE")}>
             <Image src={FE} alt="FELion" width={464} height={92} />
             <TextPart>
               <div className="line"></div>
@@ -41,7 +43,7 @@ const FourthSection = () => {
               적당할 것 가탕요. 우헤헤헤
             </TextPart>
           </PartButton>
-          <PartButton>
+          <PartButton onClick={() => router.push("/part/BE")}>
             <Image src={BE} alt="BELion" width={464} height={92} />
             <TextPart>
               <div className="line"></div>

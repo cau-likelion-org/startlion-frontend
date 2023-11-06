@@ -12,6 +12,7 @@ export default function PartPage() {
   const router = useRouter();
   const [utilToggle, setUtilToggle] = useState<boolean>(false);
   const [partToggle, setPartToggle] = useState<boolean>(false);
+  const test = `🤔 디자인적 고민을 팀원들과 공유하고 긍정적인 피드백을 할 수 있는 분!\n 🗣️ 생각을 자유롭게 표현하는 것을 즐기는 분 !\n 💬 팀원들과 소통을 통해서 더 멋있는 아이디어를 만드는 것을 즐기시는분 !\n`;
   return (
     <>
       <div className="flex-col-base py-[60px] m-auto gap-[60px] w-[1064px]">
@@ -34,13 +35,7 @@ export default function PartPage() {
         </TextBox>
         <TextBox>
           <PartText className="title">인재상</PartText>
-          <PartText className="pl-3 mb-9">
-            🤔 디자인적 고민을 팀원들과 공유하고 긍정적인 피드백을 할 수 있는 분
-            !<br />
-            🗣️ 생각을 자유롭게 표현하는 것을 즐기는 분 !<br />
-            💬 팀원들과 소통을 통해서 더 멋있는 아이디어를 만드는 것을 즐기시는
-            분 !<br />
-          </PartText>
+          <PartText className="pl-3 mb-9 whitespace-pre-line">{test}</PartText>
         </TextBox>
         <div className="w-full">
           <PartText className="title">커리큘럼</PartText>

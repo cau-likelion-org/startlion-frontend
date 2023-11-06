@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import tw, { styled } from "twin.macro";
-import backarrow from "@/svg/backarrow.svg";
+import Backarrow from "@/svg/backarrow.svg";
 import Image from "next/image";
 import design from "@/img/part/design.png";
 import { ApplyBtn } from "@/components/landing/FirstSection";
@@ -20,7 +20,7 @@ export default function PartPage() {
             파트별 소개 : {router.query.partintro}
           </div>
           <div onClick={() => router.back()}>
-            <Image src={backarrow} alt="뒤로가기" />
+            <Backarrow />
           </div>
         </div>
         <TextBox>

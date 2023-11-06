@@ -18,7 +18,7 @@ const FirstSection = () => {
 
 export default FirstSection;
 
-const ApplyBtn = styled.button(() => [
+export const ApplyBtn = styled.button(() => [
   //가운데에 211
   tw`
        w-[127px] h-[43px] bg-[#1B00FD] flex justify-center items-center gap-2.5 rounded-[24px] text-white
@@ -28,5 +28,10 @@ const ApplyBtn = styled.button(() => [
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     font-weight: 900;
     font-size: 16px;
+    &.part {
+      border-radius: 12px;
+      margin-top: 0px;
+      box-shadow: none;
+    }
   `,
 ]);

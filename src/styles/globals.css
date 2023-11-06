@@ -9,6 +9,9 @@
   .flex-base {
     @apply flex justify-center items-center;
   }
+  .flex-base-between {
+    @apply flex justify-between items-center;
+  }
 }
 
 /* :root {

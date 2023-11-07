@@ -4,6 +4,7 @@ import Backarrow from "@/svg/backarrow.svg";
 import { ApplyBtn } from "@/components/landing/FirstSection";
 import ToggleInfo from "@/components/partintro/ToggleInfo";
 import Information from "@/components/partintro/Information";
+import HeightBlank from "@/components/utils/HeightBlank";
 
 export default function PartPage() {
   //React 컴포넌트와 훅은 항상 대문자로 시작해야 한다는 것을 기억해주세요.
@@ -27,7 +28,7 @@ export default function PartPage() {
       <div className="flex-base mt-[160px] pb-[60px] w-full">
         <ApplyBtn className="part">지원하러 가기</ApplyBtn>
       </div>
-      <div className="h-[120px]"></div>
+      <HeightBlank />
     </>
   );
 }

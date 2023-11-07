@@ -1,4 +1,5 @@
 import OptionSelect from "@/components/apply/OptionSelect";
+import HeightBlank from "@/components/utils/HeightBlank";
 import React from "react";
 
 const index = () => {
@@ -8,7 +9,7 @@ const index = () => {
         <div className="text-[32px] font-bold">FAQ</div>
         <OptionSelect />
       </div>
-      <div className="h-[120px]"></div>
+      <HeightBlank />
     </>
   );
 };

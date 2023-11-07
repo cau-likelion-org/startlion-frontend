@@ -14,6 +14,12 @@
   }
 }
 
+@font-face {
+  font-family: "Black Han Sans";
+  font-weight: 400;
+  src: url("../../public/fonts/BlackHanSans-Regular.ttf") format("truetype");
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

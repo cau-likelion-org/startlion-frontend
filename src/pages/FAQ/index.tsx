@@ -1,4 +1,4 @@
-import OptionSelect from "@/components/apply/OptionSelect";
+import OptionSelect from "@/components/FAQ/OptionSelect";
 import HeightBlank from "@/components/utils/HeightBlank";
 import React from "react";
 

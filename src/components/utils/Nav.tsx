@@ -15,6 +15,7 @@ const NavBar = styled.div`
   background-color: white;
   position: sticky;
   top: 0;
+  box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const NavOptionWrapper = styled.div`

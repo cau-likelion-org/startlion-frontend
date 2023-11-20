@@ -1,9 +1,15 @@
-import { ApplyPageCheckAtom } from "@/store/atoms";
+import { ApplyPageAtom, ApplyPageCheckAtom } from "@/store/atoms";
 import React from "react";
 import { useRecoilValue } from "recoil";
+import FistPage from "./FistPage";
+import SecondPage from "./SecondPage";
+import ThirdPage from "./ThirdPage";
+import LastPage from "./LastPage";
+import ApplyMoveButton from "../utils/ApplyMoveButton";
 
 const CheckPage = () => {
   const checkPage = useRecoilValue(ApplyPageCheckAtom);
+  const PageNum = useRecoilValue(ApplyPageAtom);
   return checkPage === "apply" ? (
     <div className="w-[74%] py-20 mb-5 mx-auto">
       <div className="mb-2 font-bold text-[32px]">지원서 작성</div>
@@ -11,7 +17,18 @@ const CheckPage = () => {
         *페이지에서 이탈 시 내용이 자동 저장되지 않습니다. 임시저장 버튼을
         클릭하여 내용을 저장해 주세요.
       </div>
-      <div>이 이후부터는 이제... 그 하는 곳</div>
+      <div>
+        {PageNum === 1 ? (
+          <FistPage />
+        ) : PageNum === 2 ? (
+          <SecondPage />
+        ) : PageNum === 3 ? (
+          <ThirdPage />
+        ) : (
+          <LastPage />
+        )}
+      </div>
+      <ApplyMoveButton />
     </div>
   ) : (
     <div className="w-[74%] py-20 mb-20 mx-auto">

@@ -14,6 +14,10 @@ const InterviewCard = (props: InterviewCardProp) => {
             layout="fill"
             objectFit="cover"
           />
+          <ImgTextShow>
+            &quot; 멋사 최고~
+            <br /> 넘 재밌고 유익해용 &quot;
+          </ImgTextShow>
         </div>
         <div className="textline">
           <div>{props.name}</div>
@@ -41,6 +45,26 @@ const CardWrapper = styled.div`
       font-size: 18px;
       font-weight: 700;
     }
+  }
+`;
+
+const ImgTextShow = styled.div`
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 320px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  &:hover {
+    opacity: 1;
   }
 `;
 

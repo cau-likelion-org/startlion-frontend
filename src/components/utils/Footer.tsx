@@ -9,6 +9,7 @@ const FooterBar = styled.div`
   height: 196px;
   background-color: transparent;
   box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
 `;
 
 const FooterOptionWrapper = styled.div`

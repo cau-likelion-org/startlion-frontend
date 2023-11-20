@@ -31,7 +31,7 @@ const Nav = () => {
   const router = useRouter();
   return (
     <NavBar>
-      <Image src={logo} alt="멋사로고" />
+      <Image src={logo} alt="멋사로고" onClick={() => router.push("/")} />
       <NavOptionWrapper>
         <button>프로젝트</button>
         <button onClick={() => router.push("/interview")}>수료자 인터뷰</button>

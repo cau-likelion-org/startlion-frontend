@@ -1,10 +1,13 @@
 import { AvailableTimeAtom } from "@/store/atoms";
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "twin.macro";
+import Finalcheck from "@/svg/apply/finalcheck.svg";
+import FinalUncheck from "@/svg/apply/finaluncheck.svg";
 
 const AvailableTime = () => {
   const [availableTime, setAvailableTime] = useRecoilState(AvailableTimeAtom);
+  const [check, setCheck] = useState(false);
   const DayControlFunc = (
     index: number,
     dayState: number,
@@ -55,11 +58,16 @@ const AvailableTime = () => {
           </TimeButton>
         ))}
       </div>
-      <div className="my-[120px] flex-base w-full">
+      <div className="my-[120px] flex-base w-full gap-2">
         <div>
           세션은 매주 수요일 19시에 오프라인으로 진행됩니다. 확인하셨나요?
         </div>
-        <button>흐음</button>
+        <button
+          onClick={() => setCheck(!check)}
+          className="w-[32px] h-[32px] flex-base"
+        >
+          {check === true ? <Finalcheck /> : <FinalUncheck />}
+        </button>
       </div>
     </div>
   );
@@ -77,7 +85,6 @@ const TimeButton = styled.div`
   align-items: center;
   background-color: #e8eff8;
   &.selected {
-    background-color: #1b00fd;
-    color: white;
+    background-color: #6ca7ff;
   }
 `;

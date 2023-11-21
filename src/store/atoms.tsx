@@ -9,3 +9,16 @@ export const ApplyPageCheckAtom = atom<string>({
   key: "applyFinishCheckAtom",
   default: "apply",
 });
+
+interface AvailableTimeArray {
+  firstDay: Array<number>;
+  secondDay: Array<number>;
+}
+
+export const AvailableTimeAtom = atom<AvailableTimeArray>({
+  key: "applyAvailableTimeAtom",
+  default: {
+    firstDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    secondDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  },
+});

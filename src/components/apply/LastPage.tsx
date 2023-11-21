@@ -1,7 +1,12 @@
 import React from "react";
+import AvailableTime from "./AvailableTime";
 
 const LastPage = () => {
-  return <div>LastPage</div>;
+  return (
+    <div>
+      <AvailableTime />
+    </div>
+  );
 };
 
 export default LastPage;

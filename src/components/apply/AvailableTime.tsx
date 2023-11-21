@@ -26,7 +26,8 @@ const AvailableTime = () => {
         secondDay: newDay,
       });
     }
-    console.log(availableTime);
+    console.log(availableTime.firstDay.join(" "));
+    console.log(availableTime.secondDay.join(" "));
   };
   return (
     <div className="w-full mb-10 font-bold">

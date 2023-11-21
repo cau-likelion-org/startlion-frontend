@@ -13,7 +13,6 @@ const MainFrame = styled.div(() => [
   tw`flex w-screen h-[4000px] flex-col items-center justify-between relative`,
   css`
     transition: top 1s ease-in-out;
-    /* top: ${-800 * (index - 1)}px; */
   `,
 ]);
 

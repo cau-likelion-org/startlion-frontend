@@ -1,8 +1,28 @@
-import React from "react";
+import { ApplyPartAtom } from "@/store/atoms";
+import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { ApplyQuestionDevelop, ApplyQuestionPM } from "./ApplyTestData";
+import ApplyTextAreaBox from "../utils/ApplyTextAreaBox";
 
 const ThirdPage = () => {
+  const applyPart = useRecoilValue(ApplyPartAtom);
+  const [question, setQuestion] = useState<string[]>([]);
+  useEffect(() => {
+    applyPart === "기획"
+      ? setQuestion(ApplyQuestionPM)
+      : setQuestion(ApplyQuestionDevelop);
+  }, []);
   return (
-    <div>같은 이유로 이 부분도 안했습니다! 파트별로 다르면 좀 고민해야되서</div>
+    <div className="w-full mb-5 mx-auto">
+      <div className="font-bold text-[28px]">{applyPart} 파트 지원서</div>
+      {question.map((e, i) => {
+        if (i > 4) {
+          return <ApplyTextAreaBox title={e} key={i} />;
+        } else {
+          return <></>;
+        }
+      })}
+    </div>
   );
 };
 

@@ -1,4 +1,6 @@
+import { ApplyPartAtom } from "@/store/atoms";
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import tw, { styled } from "twin.macro";
 
 const ApplyInfo = () => {
@@ -11,6 +13,7 @@ const ApplyInfo = () => {
     "멋쟁이사자처럼 홈페이지",
     "기타",
   ];
+  const setApplyPart = useSetRecoilState(ApplyPartAtom);
   return (
     <>
       <div className="flex gap-6 mb-6 items-baseline">
@@ -118,7 +121,9 @@ const ApplyInfo = () => {
                 id={e}
                 className="hidden"
               />
-              <ApplyInputRadio htmlFor={e}>{e}</ApplyInputRadio>
+              <ApplyInputRadio htmlFor={e} onClick={() => setApplyPart(e)}>
+                {e}
+              </ApplyInputRadio>
             </>
           ))}
         </FlexGap>

@@ -1,6 +1,7 @@
 import { ApplyPageAtom, ApplyPageCheckAtom } from "@/store/atoms";
 import React from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
+import { css, styled } from "twin.macro";
 
 const ApplyMoveButton = () => {
   const [pageNum, setPageNum] = useRecoilState(ApplyPageAtom);
@@ -21,13 +22,19 @@ const ApplyMoveButton = () => {
   };
   return (
     <div className="w-full mt-20 flex-col-base">
-      <div className="gap-8 mb-10">
-        <button onClick={() => movePrevFunc(pageNum)}>이전</button>
-        <button>임시저장</button>
+      <div className="flex gap-8 mb-10">
+        <MoveButton prop={true} onClick={() => movePrevFunc(pageNum)}>
+          이전
+        </MoveButton>
+        <MoveButton prop={true}>임시저장</MoveButton>
         {pageNum === 4 ? (
-          <button onClick={() => setCheckPage("complete")}>제출</button>
+          <MoveButton prop={false} onClick={() => setCheckPage("complete")}>
+            제출
+          </MoveButton>
         ) : (
-          <button onClick={() => moveNextFunc(pageNum)}>다음</button>
+          <MoveButton prop={false} onClick={() => moveNextFunc(pageNum)}>
+            다음
+          </MoveButton>
         )}
       </div>
       <div>{pageNum}/4</div>
@@ -36,3 +43,25 @@ const ApplyMoveButton = () => {
 };
 
 export default ApplyMoveButton;
+
+const MoveButton = styled.button(({ prop }: { prop: boolean }) => [
+  css`
+    width: 90px;
+    height: 44px;
+    padding: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #1b00fd;
+    font-size: 20px;
+  `,
+  prop
+    ? css`
+        background-color: white;
+      `
+    : css`
+        background-color: #1b00fd;
+        color: white;
+        font-weight: 700;
+      `,
+]);

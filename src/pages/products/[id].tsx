@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { css, styled } from "twin.macro";
 
 // Define a type for our product data
 type Product = {
@@ -20,8 +21,8 @@ export default function productsPage({ product }: PropductProps) {
   return (
     <div style={{ height: "100vh", padding: 50 }}>
       <h1>계속 되는지 테스트...</h1>
-      <h1 style={{ color: "red" }}>이름: {product.name}</h1>
-      <h2 style={{ color: "blue" }}>가격: {product.price}</h2>
+      <H1RedColor>이름: {product.name}</H1RedColor>
+      <H1BlueColor>가격: {product.price}</H1BlueColor>
       <p>설명: {product.description}</p>
       <p>분류: {product.category}</p>
     </div>
@@ -59,3 +60,15 @@ export const getServerSideProps: GetServerSideProps<{
     },
   };
 };
+
+const H1RedColor = styled.h1(() => [
+  css`
+    color: red;
+  `,
+]);
+
+const H1BlueColor = styled.h1(() => [
+  css`
+    color: blue;
+  `,
+]);

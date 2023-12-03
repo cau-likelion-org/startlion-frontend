@@ -39,12 +39,7 @@ const Footer = () => {
             <Instagram />
           </button>
           <button
-            onClick={() =>
-              window.open(
-                "https://cau-likelion.org/puang@likelion.org",
-                "_blank"
-              )
-            }
+            onClick={() => window.open("mailto:puang@likelion.org", "_blank")}
           >
             <MessageSvg />
           </button>

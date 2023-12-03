@@ -20,7 +20,21 @@ const InterviewPage = () => {
           >
             <Backarrow />
           </div>
-          <div>{router.query.detail}인터뷰 관련</div>
+          <div className="text-[20px]">
+            <div className=" font-bold">
+              {router.query.detail}번 인터뷰 - 10기 백엔드 파트
+            </div>
+            <div className="flex gap-2.5 items-baseline text-[36px] font-bold">
+              정현우
+              <p className="text-[20px] font-normal text-[#646468]">
+                에너지시스템공학과
+              </p>
+            </div>
+            <div>
+              안녕하세요 저는 중앙대학교 멋사 10기 백엔드파트로 활동했던
+              에너지시스템공학부 정현우입니다.
+            </div>
+          </div>
         </div>
       </QNAIntroWrapper>
       <QNAWrapper>

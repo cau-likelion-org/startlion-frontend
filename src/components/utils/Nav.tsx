@@ -34,7 +34,13 @@ const Nav = () => {
     <NavBar>
       <Image src={logo} alt="멋사로고" onClick={() => router.push("/")} />
       <NavOptionWrapper>
-        <button>프로젝트</button>
+        <button
+          onClick={() =>
+            window.open("https://cau-likelion.org/project", "_blank")
+          }
+        >
+          프로젝트
+        </button>
         <button onClick={() => router.push("/interview")}>수료자 인터뷰</button>
         <button onClick={() => router.push("/FAQ")}>FAQ</button>
         <button>로그인</button>

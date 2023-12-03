@@ -1,9 +1,12 @@
 import { FAQObject } from "@/store/qnasheet";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "twin.macro";
 
 const QNAForm = (props: FAQObject) => {
   const [open, setOpen] = useState<boolean>(false);
+  useEffect(() => {
+    setOpen(false);
+  }, [props]);
   return (
     <>
       {open ? (

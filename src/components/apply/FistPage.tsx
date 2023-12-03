@@ -7,7 +7,7 @@ import ApplyInfo from "./ApplyInfo";
 const FistPage = () => {
   const [check, setCheck] = useState(false);
   return (
-    <div className="w-full py-20 mb-5 mx-auto">
+    <div className="w-full pb-20 mb-5 mx-auto">
       <ApplyTextArea />
       <div className="flex font-bold w-full gap-3 text-[#797979] items-center justify-end mb-[125px]">
         <div>

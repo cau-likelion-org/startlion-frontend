@@ -27,6 +27,9 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 cp --region ap-northeast-2 ./build.zip s3://startlion-frontend-bucket/build.zip
+      - name: Load environment variables
+        run: |
+          source .env
       - name: Deploy
         run: aws deploy create-deployment
           --application-name startlion-frontend-codeDeploy

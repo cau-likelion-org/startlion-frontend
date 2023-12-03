@@ -15,6 +15,8 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
+        env:
+          NEXT_PUBLIC_SERVER_URL: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
       - name: zip create
         run: zip -qq -r ./build.zip .
         shell: bash
@@ -27,9 +29,6 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 cp --region ap-northeast-2 ./build.zip s3://startlion-frontend-bucket/build.zip
-      - name: Load environment variables
-        run: |
-          source .env
       - name: Deploy
         run: aws deploy create-deployment
           --application-name startlion-frontend-codeDeploy

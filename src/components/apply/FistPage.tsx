@@ -33,6 +33,9 @@ export const ApplyTextArea = styled.textarea`
   background-color: #e8eff8;
   font-size: 16px;
   margin-bottom: 24px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   :focus {
     outline: none;
   }

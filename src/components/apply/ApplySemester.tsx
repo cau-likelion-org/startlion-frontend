@@ -6,6 +6,18 @@ import Toggle from "@/svg/toggle.svg";
 const ApplySemester = () => {
   const [modal, setModal] = useState<Boolean>(false);
   const [semester, setSemester] = useState<string>("해당학기");
+  const semesterOption = [
+    "1학년 1학기",
+    "1학년 2학기",
+    "2학년 1학기",
+    "2학년 2학기",
+    "3학년 1학기",
+    "3학년 2학기",
+    "4학년 1학기",
+    "4학년 2학기",
+    "추가 학기",
+    "휴학 예정",
+  ];
   const modalRef = useRef<HTMLDivElement>(null);
   return (
     <div className="gap-6 flex mb-2 relative">
@@ -28,96 +40,18 @@ const ApplySemester = () => {
       {modal ? (
         <>
           <MyPostModal ref={modalRef}>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("1학년 1학기");
-              }}
-              className="inner"
-            >
-              1학년 1학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("1학년 2학기");
-              }}
-              className="inner"
-            >
-              1학년 2학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("2학년 1학기");
-              }}
-              className="inner"
-            >
-              2학년 1학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("2학년 2학기");
-              }}
-              className="inner"
-            >
-              2학년 2학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("3학년 1학기");
-              }}
-              className="inner"
-            >
-              3학년 1학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("3학년 2학기");
-              }}
-              className="inner"
-            >
-              3학년 2학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("4학년 1학기");
-              }}
-              className="inner"
-            >
-              4학년 1학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("4학년 2학기");
-              }}
-              className="inner"
-            >
-              4학년 2학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("추가학기");
-              }}
-              className="inner"
-            >
-              추가 학기
-            </div>
-            <div
-              onClick={() => {
-                setModal(!modal);
-                setSemester("휴학 예정");
-              }}
-              className="inner"
-            >
-              휴학 예정
-            </div>
+            {semesterOption.map((e, i) => (
+              <div
+                key={i}
+                onClick={() => {
+                  setModal(!modal);
+                  setSemester(e);
+                }}
+                className="inner"
+              >
+                {e}
+              </div>
+            ))}
           </MyPostModal>
         </>
       ) : null}

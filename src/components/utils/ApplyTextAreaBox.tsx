@@ -20,7 +20,11 @@ const ApplyTextArea = styled.textarea`
   border-radius: 8px;
   background-color: #e8eff8;
   padding: 20px;
+  overflow: scroll;
   :focus {
     outline: none;
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;

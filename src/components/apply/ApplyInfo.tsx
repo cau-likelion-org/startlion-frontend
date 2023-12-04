@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import tw, { styled } from "twin.macro";
 import Toggle from "@/svg/toggle.svg";
+import ApplySemester from "./ApplySemester";
 
 const ApplyInfo = () => {
   //아직 onClick을 추가안한 상태
@@ -14,9 +15,6 @@ const ApplyInfo = () => {
     "멋쟁이사자처럼 홈페이지",
     "기타",
   ];
-  const [modal, setModal] = useState<Boolean>(false);
-  const modalRef = useRef<HTMLDivElement>(null);
-  const [semester, setSemester] = useState<string>("해당학기");
 
   const setApplyPart = useSetRecoilState(ApplyPartAtom);
   return (
@@ -63,48 +61,7 @@ const ApplyInfo = () => {
           <ApplyInfoText>다전공</ApplyInfoText>
           <ApplyInput />
         </FlexGap>
-        <div className="gap-6 flex mb-2 relative">
-          <ApplyInfoText>해당 학기*</ApplyInfoText>
-          <ApplyInfoSelect
-            onClick={() => {
-              setModal(!modal);
-            }}
-          >
-            <div>
-              {" "}
-              <Toggle
-                style={{
-                  transform: modal ? "rotate(90deg)" : "rotate(0deg)",
-                }}
-              />
-            </div>
-            <div>{semester}</div>
-          </ApplyInfoSelect>
-          {modal ? (
-            <>
-              <MyPostModal ref={modalRef}>
-                <div
-                  onClick={() => {
-                    setModal(!modal);
-                    setSemester("1학기");
-                  }}
-                  className="inner"
-                >
-                  1학기
-                </div>
-                <div
-                  onClick={() => {
-                    setModal(!modal);
-                    setSemester("2학기");
-                  }}
-                  className="inner"
-                >
-                  2학기
-                </div>
-              </MyPostModal>
-            </>
-          ) : null}
-        </div>
+        <ApplySemester />
         <div className="text-[#797979] mb-9 text-right w-full">
           *1학기 기준 해당 학기 선택 바랍니다.
         </div>
@@ -181,7 +138,7 @@ const FlexGap = tw.div`
     flex gap-6 mb-9
 `;
 
-const ApplyInfoText = styled.div`
+export const ApplyInfoText = styled.div`
   text-align: center;
   font-size: 24px;
   font-weight: 700;

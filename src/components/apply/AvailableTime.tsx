@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { styled } from "twin.macro";
 import Finalcheck from "@/svg/apply/finalcheck.svg";
 import FinalUncheck from "@/svg/apply/finaluncheck.svg";
+import { TotalApplyTimeArray } from "@/store/testData";
 
 const AvailableTime = () => {
   const [availableTime, setAvailableTime] = useRecoilState(AvailableTimeAtom);
@@ -44,7 +45,7 @@ const AvailableTime = () => {
             className={e === 0 ? "" : "selected"}
             onClick={() => DayControlFunc(i, e, "firstDay")}
           >
-            시간
+            {TotalApplyTimeArray[i]}
           </TimeButton>
         ))}
         <div className="my-8 bg-black h-[1px] w-full"></div>
@@ -54,7 +55,7 @@ const AvailableTime = () => {
             className={e === 0 ? "" : "selected"}
             onClick={() => DayControlFunc(i, e, "secondDay")}
           >
-            시간
+            {TotalApplyTimeArray[i]}
           </TimeButton>
         ))}
       </div>

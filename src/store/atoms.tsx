@@ -15,15 +15,19 @@ export const ApplyPartAtom = atom<string>({
   default: "",
 });
 
-interface AvailableTimeArray {
-  firstDay: Array<number>;
-  secondDay: Array<number>;
+export interface KeyPair<V> {
+  [key: string]: V;
 }
 
-export const AvailableTimeAtom = atom<AvailableTimeArray>({
+// interface AvailableTimeArray {
+//   firstDay: Array<number>;
+//   secondDay: Array<number>;
+// }
+
+export const AvailableTimeAtom = atom<KeyPair<Array<number>>>({
   key: "applyAvailableTimeAtom",
   default: {
-    firstDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    firstDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     secondDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   },
 });

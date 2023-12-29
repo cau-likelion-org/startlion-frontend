@@ -2,6 +2,7 @@ import { InterviewCardProp } from "@/store/testData";
 import Image from "next/image";
 import React from "react";
 import { styled } from "twin.macro";
+import design from "@/img/part/design.png";
 
 const InterviewCard = (props: InterviewCardProp) => {
   return (
@@ -9,7 +10,7 @@ const InterviewCard = (props: InterviewCardProp) => {
       <div>
         <div className="w-[320px] h-[320px] relative mb-[13.5px]">
           <Image
-            src={props.img}
+            src={design}
             alt="인터뷰 메인 이미지"
             layout="fill"
             objectFit="cover"

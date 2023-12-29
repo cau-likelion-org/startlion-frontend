@@ -4,14 +4,25 @@ import React from "react";
 import tw from "twin.macro";
 import QNABox from "@/components/interview/QNABox";
 import Backarrow from "@/svg/backarrow.svg";
+import { GetServerSideProps } from "next";
+import { InterviewInfo, InterviewInfoProps } from "@/store/type";
+import Image from "next/image";
+import design from "@/img/part/design.png";
 
-const InterviewPage = () => {
+const InterviewPage = ({ interviewInfo }: InterviewInfoProps) => {
   const router = useRouter();
   return (
     <div className="flex-col-base py-[120px] w-[1107px] mx-auto">
       <QNAIntroWrapper>
         <div className="w-[250px] h-[250px] bg-gray-300">
-          이미지파트(백엔드한테 받을부분)
+          <Image
+            src={
+              interviewInfo.imageUrl === null ? design : interviewInfo.imageUrl
+            }
+            alt="인터뷰 메인 이미지"
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div className="flex flex-col w-[calc(100%-250px)]">
           <div
@@ -22,23 +33,21 @@ const InterviewPage = () => {
           </div>
           <div className="text-[20px]">
             <div className=" font-bold">
-              {router.query.detail}번 인터뷰 - 10기 백엔드 파트
+              {interviewInfo.interviewId}번 인터뷰 - {interviewInfo.part}기{" "}
+              {interviewInfo.part} 파트
             </div>
             <div className="flex gap-2.5 items-baseline text-[36px] font-bold">
-              정현우
+              {interviewInfo.name}
               <p className="text-[20px] font-normal text-[#646468]">
-                에너지시스템공학과
+                {interviewInfo.major}
               </p>
             </div>
-            <div>
-              안녕하세요 저는 중앙대학교 멋사 10기 백엔드파트로 활동했던
-              에너지시스템공학부 정현우입니다.
-            </div>
+            <div>{interviewInfo.title}</div>
           </div>
         </div>
       </QNAIntroWrapper>
       <QNAWrapper>
-        <QNABox />
+        <QNABox interviewAnswers={interviewInfo.interviewAnswers} />
       </QNAWrapper>
       <HeightBlank />
     </div>
@@ -46,6 +55,36 @@ const InterviewPage = () => {
 };
 
 export default InterviewPage;
+
+export const getServerSideProps: GetServerSideProps<{
+  interviewInfo: InterviewInfo;
+}> = async (context) => {
+  const interviewId = parseInt(context.params?.detail as string) || 1;
+  // Define the API url with the product id
+  const API_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/interviews/${interviewId}`;
+
+  // Fetch data
+  const res = await fetch(API_URL);
+
+  // Parse the data
+  const data = await res.json();
+  const interviewInfo = data;
+  console.log(data);
+
+  // If the product is not found, return notFound - 404 page
+  if (interviewInfo === null) {
+    return {
+      notFound: true,
+    };
+  }
+
+  // Return the product as props
+  return {
+    props: {
+      interviewInfo,
+    },
+  };
+};
 
 const QNAWrapper = tw.div`
     w-full gap-[160px] flex flex-col

@@ -5,8 +5,10 @@ import { ApplyBtn } from "@/components/landing/FirstSection";
 import ToggleInfo from "@/components/partintro/ToggleInfo";
 import Information from "@/components/partintro/Information";
 import HeightBlank from "@/components/utils/HeightBlank";
+import { GetServerSideProps } from "next";
+import { PartInfo, PartInfoProps } from "@/store/type";
 
-export default function PartPage() {
+export default function PartPage({ partInfo }: PartInfoProps) {
   //React 컴포넌트와 훅은 항상 대문자로 시작해야 한다는 것을 기억해주세요.
   const router = useRouter();
   return (
@@ -20,9 +22,17 @@ export default function PartPage() {
             <Backarrow />
           </div>
         </div>
-        <Information />
+        <Information
+          partContent={partInfo.partContent}
+          typeOfTalent={partInfo.typeOfTalent}
+          imageUrl={partInfo.imageUrl}
+          curriculumContents={partInfo.curriculumContents}
+        />
         <div className="w-full pt-[40px]">
-          <ToggleInfo />
+          <ToggleInfo
+            commonQuestions={partInfo.commonQuestions}
+            partQuestions={partInfo.partQuestions}
+          />
         </div>
       </div>
       <div className="flex-base mt-[160px] pb-[60px] w-full">
@@ -32,6 +42,36 @@ export default function PartPage() {
     </>
   );
 }
+
+// Export the getServerSideProps function with GetServerSideProps type
+export const getServerSideProps: GetServerSideProps<{
+  partInfo: PartInfo;
+}> = async (context) => {
+  // get params id from the url
+  const partInfoName = context.params?.partintro as string;
+
+  const API_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/parts/${partInfoName}`;
+
+  // Fetch data
+  const res = await fetch(API_URL);
+
+  // Parse the data
+  const data = await res.json();
+  const partInfo = data;
+
+  // If the product is not found, return notFound - 404 page
+  if (partInfo === null) {
+    return {
+      notFound: true,
+    };
+  }
+  // Return the product as props
+  return {
+    props: {
+      partInfo,
+    },
+  };
+};
 
 export const TextBox = tw.div`
 flex flex-col items-start justify-start gap-4 w-full

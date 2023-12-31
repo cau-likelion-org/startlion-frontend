@@ -1,11 +1,9 @@
 export type InterviewInfo = {
   interviewId: number;
-  title: string;
   generation: number;
   part: string;
   major: string;
   name: string;
-  oneLineContent: string;
   oneLineAnswer: string;
   imageUrl: string | null;
   interviewAnswers: Array<InterviewAnswerProp>;

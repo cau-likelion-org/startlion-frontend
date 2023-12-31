@@ -14,14 +14,14 @@ const InterviewPage = ({ interviewInfo }: InterviewInfoProps) => {
   return (
     <div className="flex-col-base py-[120px] w-[1107px] mx-auto">
       <QNAIntroWrapper>
-        <div className="w-[250px] h-[250px] bg-gray-300">
+        <div className="w-[250px] h-[250px] bg-gray-300 overflow-hidden relative">
           <Image
             src={
               interviewInfo.imageUrl === null ? design : interviewInfo.imageUrl
             }
             alt="인터뷰 메인 이미지"
             layout="fill"
-            objectFit="cover"
+            objectFit="fill"
           />
         </div>
         <div className="flex flex-col w-[calc(100%-250px)]">
@@ -33,8 +33,8 @@ const InterviewPage = ({ interviewInfo }: InterviewInfoProps) => {
           </div>
           <div className="text-[20px]">
             <div className=" font-bold">
-              {interviewInfo.interviewId}번 인터뷰 - {interviewInfo.part}기{" "}
-              {interviewInfo.part} 파트
+              {interviewInfo.interviewId}번 인터뷰 - {interviewInfo.generation}
+              기 {interviewInfo.part} 파트
             </div>
             <div className="flex gap-2.5 items-baseline text-[36px] font-bold">
               {interviewInfo.name}
@@ -42,7 +42,7 @@ const InterviewPage = ({ interviewInfo }: InterviewInfoProps) => {
                 {interviewInfo.major}
               </p>
             </div>
-            <div>{interviewInfo.title}</div>
+            <div>{interviewInfo.oneLineAnswer}</div>
           </div>
         </div>
       </QNAIntroWrapper>

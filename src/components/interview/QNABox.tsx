@@ -19,9 +19,7 @@ const QNABox = (props: Props) => {
             <div>Q. {e.question}</div>
           </QustionWrpper>
           <AnswerWrapper>
-            <div className="keypoint">
-              개발자로서 진로에 대한 고민을 해결하고자 지원했어요.
-            </div>
+            <div className="keypoint">{e.boldAnswer}</div>
             <div>{e.answer}</div>
           </AnswerWrapper>
         </div>

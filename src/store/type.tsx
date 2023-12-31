@@ -14,6 +14,7 @@ export type InterviewInfo = {
 export type InterviewAnswerProp = {
   interviewAnswerId: number;
   question: string;
+  boldAnswer: string;
   answer: string;
 };
 

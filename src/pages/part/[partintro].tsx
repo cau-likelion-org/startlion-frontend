@@ -16,7 +16,7 @@ export default function PartPage({ partInfo }: PartInfoProps) {
       <div className="flex-col-base py-[60px] m-auto gap-[60px] w-[1064px]">
         <div className="flex-base-between w-full">
           <div className=" font-bold text-[32px]">
-            파트별 소개 : {router.query.partintro}
+            파트별 소개 : {partInfo.partName}
           </div>
           <div onClick={() => router.back()}>
             <Backarrow />
@@ -87,5 +87,6 @@ export const PartText = styled.div`
   }
   &.schedule {
     line-height: 200%;
+    white-space: pre-line;
   }
 `;

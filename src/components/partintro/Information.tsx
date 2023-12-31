@@ -7,11 +7,10 @@ type Props = {
   partContent: string;
   typeOfTalent: string;
   imageUrl: string;
-  curriculumContents: Array<string>;
+  curriculumContents: string;
 };
 
 const Information = (props: Props) => {
-  const test = `🤔 디자인적 고민을 팀원들과 공유하고 긍정적인 피드백을 할 수 있는 분!\n 🗣️ 생각을 자유롭게 표현하는 것을 즐기는 분 !\n 💬 팀원들과 소통을 통해서 더 멋있는 아이디어를 만드는 것을 즐기시는분 !\n`;
   return (
     <>
       <TextBox>
@@ -33,11 +32,7 @@ const Information = (props: Props) => {
             width={520}
             height={280}
           />
-          <PartText className="schedule">
-            {props.curriculumContents.map((e, i) => (
-              <div key={i}>{e}</div>
-            ))}
-          </PartText>
+          <PartText className="schedule">{props.curriculumContents}</PartText>
         </div>
       </div>
     </>

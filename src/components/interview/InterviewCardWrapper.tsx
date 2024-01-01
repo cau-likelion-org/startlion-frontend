@@ -4,15 +4,32 @@ import Arrowdown from "@/svg/arrowdown.svg";
 import { InterviewCardTest, InterviewRouteProp } from "@/store/testData";
 import InterviewCard from "./InterviewCard";
 import Link from "next/link";
+import { TotalInterviewInfo } from "@/store/type";
+import axios from "axios";
 
 const InterviewCardWrapper = () => {
-  const options = ["ALL", "PM", "frontend", "backend", "design"];
+  const options = [
+    { param: "ALL", name: "ALL" },
+    { param: "PM", name: "PM" },
+    { param: "FE", name: "FE" },
+    { param: "BE", name: "BE" },
+    { param: "DE", name: "DESIGN" },
+    { param: "DEV", name: "DEV" },
+  ];
   const [option, setOption] = useState<string>("ALL");
+  const [serverParam, setServerParam] = useState<string>("ALL");
   const [viewmore, setViewmore] = useState<boolean>(false);
-  const [getInfo, setGetInfo] = useState<Array<InterviewRouteProp>>([]);
+  const [getInfo, setGetInfo] = useState<Array<TotalInterviewInfo>>([]);
   useEffect(() => {
-    setGetInfo(InterviewCardTest);
-  }, [getInfo]);
+    getInterviewApi(serverParam).then((res) => {
+      setGetInfo(res.data);
+    });
+  }, [serverParam]);
+  useEffect(() => {
+    getInterviewApi(serverParam).then((res) => {
+      setGetInfo(res.data);
+    });
+  }, []);
   return (
     <div className="flex-col-base w-full">
       <div className="flex-base-between pb-20 gap-8">
@@ -20,55 +37,65 @@ const InterviewCardWrapper = () => {
           return (
             <>
               <InterviewButton
-                select={option === e ? true : false}
-                onClick={() => setOption(e)}
+                select={option === e.name ? true : false}
+                onClick={() => {
+                  setOption(e.name);
+                  setServerParam(e.param);
+                }}
               >
-                {e}
+                {e.name}
               </InterviewButton>
             </>
           );
         })}
       </div>
       <div className="w-full flex-base-between gap-[40px] flex-wrap">
-        {getInfo.map((e, i) => {
-          if (i > 14 && viewmore === false) {
-            return;
-          } else if (i > 14 && viewmore === true) {
-            return (
-              <Link
-                key={i}
-                href={{
-                  pathname: "/interview/[detail]",
-                  query: { detail: e.index },
-                }}
-              >
-                <InterviewCard
+        {Array.isArray(getInfo) &&
+          getInfo.map((e, i) => {
+            if (i > 14 && viewmore === false) {
+              return;
+            } else if (i > 14 && viewmore === true) {
+              return (
+                <Link
                   key={i}
-                  img={e.img}
-                  name={e.name}
-                  part={e.part}
-                />
-              </Link>
-            );
-          } else {
-            return (
-              <Link
-                key={i}
-                href={{
-                  pathname: "/interview/[detail]",
-                  query: { detail: e.index },
-                }}
-              >
-                <InterviewCard
+                  href={{
+                    pathname: "/interview/[detail]",
+                    query: { detail: e.interviewId },
+                  }}
+                >
+                  <InterviewCard
+                    key={i}
+                    interviewId={e.interviewId}
+                    generation={e.generation}
+                    OneLineContent={e.OneLineContent}
+                    imageUrl={e.imageUrl}
+                    name={e.name}
+                    part={e.part}
+                  />
+                </Link>
+              );
+            } else {
+              return (
+                <Link
                   key={i}
-                  img={e.img}
-                  name={e.name}
-                  part={e.part}
-                />
-              </Link>
-            );
-          }
-        })}
+                  href={{
+                    pathname: "/interview/[detail]",
+                    query: { detail: e.interviewId },
+                  }}
+                >
+                  <InterviewCard
+                    key={i}
+                    interviewId={e.interviewId}
+                    generation={e.generation}
+                    OneLineContent={e.OneLineContent}
+                    imageUrl={e.imageUrl}
+                    name={e.name}
+                    part={e.part}
+                  />
+                </Link>
+              );
+            }
+          })}
       </div>
       <div className=" mt-[120px] ">
         <ViewMoreButton onClick={() => setViewmore(!viewmore)}>
@@ -85,6 +112,20 @@ const InterviewCardWrapper = () => {
 };
 
 export default InterviewCardWrapper;
+
+export const getInterviewApi = async (name: string) => {
+  return await axios
+    .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/interviews?part=${name}`)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      if (axios.isAxiosError(error)) {
+        const result = error.response?.data?.detail;
+        return result;
+      }
+    });
+};
 
 const InterviewButton = styled.button(({ select }: { select: boolean }) => [
   css`

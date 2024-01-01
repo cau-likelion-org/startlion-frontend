@@ -9,6 +9,15 @@ export type InterviewInfo = {
   interviewAnswers: Array<InterviewAnswerProp>;
 };
 
+export type TotalInterviewInfo = {
+  interviewId: number;
+  generation: number;
+  name: string;
+  part: string;
+  OneLineContent: string;
+  imageUrl: string | null;
+};
+
 export type InterviewAnswerProp = {
   interviewAnswerId: number;
   question: string;
@@ -20,10 +29,6 @@ export interface InterviewInfoProps {
   interviewInfo: InterviewInfo;
 }
 
-export interface TotalInterviewProps {
-  totalInterview: TotalInterviewInfo;
+export interface TotalInterviewInfoProps {
+  totalInterviewInfo: TotalInterviewInfo;
 }
-
-export type TotalInterviewInfo = {
-  totalInterview: Array<InterviewInfo>;
-};

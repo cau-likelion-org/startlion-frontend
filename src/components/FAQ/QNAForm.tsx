@@ -39,13 +39,11 @@ const QuestionPart = styled.div`
   border-radius: 20px;
   background-color: #f8fafc;
   width: 720px;
-  height: 58px;
   display: flex;
   align-items: center;
   &.withanswer {
     padding: 20px 29px;
     flex-direction: column;
-    height: 126px;
     align-items: flex-start;
     > div {
       font-size: 16px;

@@ -12,8 +12,8 @@ export const ApplyFAQ = [
       <>
         1~4학년 재적생이라면 모두 지원 가능합니다.
         <p style={{ color: "red" }}>
-          중앙대학교 학부 신입생/재학생/휴학생/자대 편입생/졸업유예생
-          가능(졸업생, 타대생 불가)
+          중앙대학교 학부 신입생/재학생/휴학생/자대 편입생/졸업유예생 가능
+          <span style={{ color: "black" }}>(졸업생, 타대생 불가)</span>
         </p>
       </>
     ),
@@ -22,8 +22,9 @@ export const ApplyFAQ = [
     question: "Q. 개인 포트폴리오는 링크로만 제출 가능한가요?",
     answer: (
       <>
-        네, 링크로만 첨부할 수 있습니다. 파일일 경우, 구글 드라이브에 업로드한
-        후 해당 파일 링크를 첨부하시면 됩니다.
+        네, <span style={{ color: "red" }}>링크로만</span> 첨부할 수 있습니다.
+        파일일 경우, 구글 드라이브에 업로드한 후 해당 파일 링크를 첨부하시면
+        됩니다.
       </>
     ),
   },
@@ -92,8 +93,11 @@ export const ActivityFAQ = [
     question: "Q. 세션은 언제, 어떻게 진행되나요?",
     answer: (
       <>
-        세션은 매주 수요일 오후 7시-10시에 중앙대학교 서울캠 강의실에서 대면으로
-        진행됩니다.
+        세션은{" "}
+        <span style={{ color: "red" }}>
+          매주 수요일 오후 7시-10시에 중앙대학교 서울캠 강의실에서 대면
+        </span>
+        으로 진행됩니다.
       </>
     ),
   },
@@ -101,8 +105,23 @@ export const ActivityFAQ = [
     question: "Q. 관련 교육이 따로 진행되나요?",
     answer: (
       <>
-        파트별로 커리큘럼에 따라 세션을 진행합니다. 자세한 내용은 파트별
-        페이지에서 확인하실 수 있습니다.
+        파트별로 커리큘럼에 따라 세션을 진행합니다. 자세한 내용은{" "}
+        <Link href="/part/PM" style={{ fontWeight: "bold" }}>
+          기획
+        </Link>
+        ,{" "}
+        <Link href="/part/DE" style={{ fontWeight: "bold" }}>
+          디자인
+        </Link>
+        ,{" "}
+        <Link href="/part/FE" style={{ fontWeight: "bold" }}>
+          프론트엔드
+        </Link>
+        ,{" "}
+        <Link href="/part/BE" style={{ fontWeight: "bold" }}>
+          백엔드
+        </Link>
+        에서 확인하실 수 있습니다.
       </>
     ),
   },
@@ -110,8 +129,8 @@ export const ActivityFAQ = [
     question: "Q. 회비나 준비물이 있나요?",
     answer: (
       <>
-        연 3만원의 회비가 있으며 동아리 내 회비 사용 계획과 내역을 공지하고
-        있습니다.
+        <span style={{ color: "red" }}>연 3만원의 회비</span>가 있으며 동아리 내
+        회비 사용 계획과 내역을 공지하고 있습니다.
         <br />
         또한
         <span style={{ color: "red" }}>
@@ -134,7 +153,8 @@ export const ActivityFAQ = [
     question: "Q. 활동 기간이 어떻게 되나요?",
     answer: (
       <>
-        활동 기간은 3월~12월입니다. 2학기 연속 활동하셔야 수료하실 수 있습니다.
+        활동 기간은 <span style={{ color: "red" }}>3월~12월</span>입니다. 2학기
+        연속 활동하셔야 수료하실 수 있습니다.
         <br />
         또한 아기사자로 1년 활동 및 수료 후 다음 기수 운영진으로 활동
         가능합니다.

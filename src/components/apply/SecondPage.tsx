@@ -8,9 +8,12 @@ const SecondPage = () => {
   const applyPart = useRecoilValue(ApplyPartAtom);
   const [question, setQuestion] = useState<string[]>([]);
   useEffect(() => {
-    applyPart === "기획"
-      ? setQuestion(ApplyQuestionPM)
-      : setQuestion(ApplyQuestionDevelop);
+    switch (applyPart) {
+      case "기획":
+        setQuestion(ApplyQuestionPM);
+      default:
+        setQuestion(ApplyQuestionDevelop);
+    }
   }, []);
   return (
     <div className="w-full mb-5 mx-auto">

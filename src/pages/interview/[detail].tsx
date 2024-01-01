@@ -42,7 +42,6 @@ const InterviewPage = ({ interviewInfo }: InterviewInfoProps) => {
                 {interviewInfo.major}
               </p>
             </div>
-            <div>{interviewInfo.oneLineAnswer}</div>
           </div>
         </div>
       </QNAIntroWrapper>

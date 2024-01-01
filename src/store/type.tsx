@@ -18,7 +18,6 @@ export type InterviewInfo = {
   part: string;
   major: string;
   name: string;
-  oneLineAnswer: string;
   imageUrl: string | null;
   interviewAnswers: Array<InterviewAnswerProp>;
 };

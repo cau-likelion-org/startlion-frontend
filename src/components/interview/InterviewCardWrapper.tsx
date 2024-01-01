@@ -32,7 +32,7 @@ const InterviewCardWrapper = () => {
   }, []);
   return (
     <div className="flex-col-base w-full">
-      <div className="flex-base-between pb-20 gap-8">
+      <div className="flex-base-start pb-20 gap-8">
         {options.map((e) => {
           return (
             <>
@@ -49,7 +49,7 @@ const InterviewCardWrapper = () => {
           );
         })}
       </div>
-      <div className="w-full flex-base-between gap-[40px] flex-wrap">
+      <div className="w-full flex-base-start gap-[40px] flex-wrap">
         {Array.isArray(getInfo) &&
           getInfo.map((e, i) => {
             if (i > 14 && viewmore === false) {

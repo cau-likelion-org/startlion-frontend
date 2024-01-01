@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { css, styled } from "twin.macro";
 import Arrowdown from "@/svg/arrowdown.svg";
-import { InterviewCardTest, InterviewRouteProp } from "@/store/testData";
-import InterviewCard from "./InterviewCard";
-import Link from "next/link";
 import { TotalInterviewInfo } from "@/store/type";
 import axios from "axios";
+import CallInterviewCard from "./CallInterviewCard";
 
 const InterviewCardWrapper = () => {
   const options = [
@@ -56,43 +54,27 @@ const InterviewCardWrapper = () => {
               return;
             } else if (i > 14 && viewmore === true) {
               return (
-                <Link
+                <CallInterviewCard
                   key={i}
-                  href={{
-                    pathname: "/interview/[detail]",
-                    query: { detail: e.interviewId },
-                  }}
-                >
-                  <InterviewCard
-                    key={i}
-                    interviewId={e.interviewId}
-                    generation={e.generation}
-                    OneLineContent={e.OneLineContent}
-                    imageUrl={e.imageUrl}
-                    name={e.name}
-                    part={e.part}
-                  />
-                </Link>
+                  interviewId={e.interviewId}
+                  generation={e.generation}
+                  OneLineContent={e.OneLineContent}
+                  imageUrl={e.imageUrl}
+                  name={e.name}
+                  part={e.part}
+                />
               );
             } else {
               return (
-                <Link
+                <CallInterviewCard
                   key={i}
-                  href={{
-                    pathname: "/interview/[detail]",
-                    query: { detail: e.interviewId },
-                  }}
-                >
-                  <InterviewCard
-                    key={i}
-                    interviewId={e.interviewId}
-                    generation={e.generation}
-                    OneLineContent={e.OneLineContent}
-                    imageUrl={e.imageUrl}
-                    name={e.name}
-                    part={e.part}
-                  />
-                </Link>
+                  interviewId={e.interviewId}
+                  generation={e.generation}
+                  OneLineContent={e.OneLineContent}
+                  imageUrl={e.imageUrl}
+                  name={e.name}
+                  part={e.part}
+                />
               );
             }
           })}

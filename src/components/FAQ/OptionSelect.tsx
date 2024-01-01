@@ -1,4 +1,4 @@
-import { ActivityFAQ, ApplyFAQ, FAQObject, OtherFAQ } from "@/store/qnasheet";
+import { ActivityFAQ, ApplyFAQ, FAQObject } from "@/store/qnasheet";
 import React, { useEffect, useState } from "react";
 import QNAForm from "./QNAForm";
 import tw, { css, styled } from "twin.macro";
@@ -10,10 +10,8 @@ const OptionSelect = () => {
   useEffect(() => {
     if (show === "apply") {
       setData(ApplyFAQ);
-    } else if (show === "activity") {
-      setData(ActivityFAQ);
     } else {
-      setData(OtherFAQ);
+      setData(ActivityFAQ);
     }
   }, [show]);
   return (
@@ -36,14 +34,6 @@ const OptionSelect = () => {
               }}
             >
               활동 관련
-            </QuestionText>
-            <QuestionText
-              select={show === "others" ? true : false}
-              onClick={() => {
-                setShow("others");
-              }}
-            >
-              그 외의 질문들
             </QuestionText>
             <div className="text-[14px] font-normal text-[#484848] mt-14">
               *추가적인 문의 사항이 있다면

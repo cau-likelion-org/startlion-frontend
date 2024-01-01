@@ -12,6 +12,13 @@ const QNAForm = (props: FAQObject) => {
       {open ? (
         <QuestionPart className="withanswer" onClick={() => setOpen(!open)}>
           <p className="mb-1.5">{props.question}</p>
+          <p
+            style={{
+              border: "1px solid black",
+              height: "1px",
+              width: "670px",
+            }}
+          ></p>
           <div>{props.answer}</div>
         </QuestionPart>
       ) : (
@@ -44,7 +51,6 @@ const QuestionPart = styled.div`
       font-size: 16px;
       font-weight: 400;
       padding-top: 6px;
-      border-top: 1px solid black;
     }
   }
 `;

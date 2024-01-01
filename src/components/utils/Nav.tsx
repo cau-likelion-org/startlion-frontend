@@ -3,6 +3,8 @@ import { styled } from "twin.macro";
 import logo from "@/img/logo.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useRecoilValue } from "recoil";
+import { userInfoState } from "@/store/atoms";
 
 const NavBar = styled.div`
   z-index: 10;
@@ -29,6 +31,12 @@ const NavOptionWrapper = styled.div`
 `;
 
 const Nav = () => {
+  const loginUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/login`;
+  const userToken = useRecoilValue(userInfoState);
+
+  const handleClick = () => {
+    window.location.assign(loginUrl);
+  };
   const router = useRouter();
   return (
     <NavBar>
@@ -43,7 +51,11 @@ const Nav = () => {
         </button>
         <button onClick={() => router.push("/interview")}>수료자 인터뷰</button>
         <button onClick={() => router.push("/FAQ")}>FAQ</button>
-        <button>로그인</button>
+        {userToken.accessToken === "" ? (
+          <button onClick={handleClick}>로그인</button>
+        ) : (
+          <button onClick={() => router.push("/mypage")}>마이페이지</button>
+        )}
       </NavOptionWrapper>
     </NavBar>
   );

@@ -1,5 +1,4 @@
 import Footer from "@/components/utils/Footer";
-import Nav from "@/components/utils/Nav";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";

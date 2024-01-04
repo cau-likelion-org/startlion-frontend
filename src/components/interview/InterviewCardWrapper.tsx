@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { css, styled } from "twin.macro";
 import Arrowdown from "@/svg/arrowdown.svg";
 import { TotalInterviewInfo } from "@/store/type";
-import axios from "axios";
 import CallInterviewCard from "./CallInterviewCard";
+import { getInterviewApi } from "@/apis/interview/api";
 
 const InterviewCardWrapper = () => {
   const options = [
@@ -94,20 +94,6 @@ const InterviewCardWrapper = () => {
 };
 
 export default InterviewCardWrapper;
-
-export const getInterviewApi = async (name: string) => {
-  return await axios
-    .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/interviews?part=${name}`)
-    .then((response) => {
-      return response;
-    })
-    .catch((error) => {
-      if (axios.isAxiosError(error)) {
-        const result = error.response?.data?.detail;
-        return result;
-      }
-    });
-};
 
 const InterviewButton = styled.button(({ select }: { select: boolean }) => [
   css`

@@ -9,7 +9,6 @@ type Props = {
 };
 
 const QNABox = (props: Props) => {
-  //이부분은 나중에 바뀔 것..! 서버에서 받은걸로 하나하나 돌릴것이기 때문!
   return (
     <>
       {props.interviewAnswers.map((e, i) => (

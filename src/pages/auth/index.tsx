@@ -1,5 +1,4 @@
 import { userInfoState } from "@/store/atoms";
-import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useSetRecoilState } from "recoil";

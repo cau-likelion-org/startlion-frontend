@@ -1,4 +1,3 @@
-import { InterviewCardProp } from "@/store/testData";
 import Image from "next/image";
 import React from "react";
 import { styled } from "twin.macro";

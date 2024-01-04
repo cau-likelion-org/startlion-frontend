@@ -1,74 +1,83 @@
 import React, { useEffect, useState } from "react";
 import { css, styled } from "twin.macro";
 import Arrowdown from "@/svg/arrowdown.svg";
-import { InterviewCardTest, InterviewRouteProp } from "@/store/testData";
-import InterviewCard from "./InterviewCard";
-import Link from "next/link";
+import { TotalInterviewInfo } from "@/store/type";
+import CallInterviewCard from "./CallInterviewCard";
+import { getInterviewApi } from "@/apis/interview/api";
 
 const InterviewCardWrapper = () => {
-  const options = ["ALL", "PM", "frontend", "backend", "design"];
+  const options = [
+    { param: "ALL", name: "ALL" },
+    { param: "PM", name: "PM" },
+    { param: "FE", name: "FE" },
+    { param: "BE", name: "BE" },
+    { param: "DE", name: "DESIGN" },
+    { param: "DEV", name: "DEV" },
+  ];
   const [option, setOption] = useState<string>("ALL");
+  const [serverParam, setServerParam] = useState<string>("ALL");
   const [viewmore, setViewmore] = useState<boolean>(false);
-  const [getInfo, setGetInfo] = useState<Array<InterviewRouteProp>>([]);
+  const [getInfo, setGetInfo] = useState<Array<TotalInterviewInfo>>([]);
   useEffect(() => {
-    setGetInfo(InterviewCardTest);
-  }, [getInfo]);
+    getInterviewApi(serverParam).then((res) => {
+      setGetInfo(res.data);
+    });
+  }, [serverParam]);
+  useEffect(() => {
+    getInterviewApi(serverParam).then((res) => {
+      setGetInfo(res.data);
+    });
+  }, []);
   return (
     <div className="flex-col-base w-full">
-      <div className="flex-base-between pb-20 gap-8">
+      <div className="flex-base-start pb-20 gap-8">
         {options.map((e) => {
           return (
             <>
               <InterviewButton
-                select={option === e ? true : false}
-                onClick={() => setOption(e)}
+                select={option === e.name ? true : false}
+                onClick={() => {
+                  setOption(e.name);
+                  setServerParam(e.param);
+                }}
               >
-                {e}
+                {e.name}
               </InterviewButton>
             </>
           );
         })}
       </div>
-      <div className="w-full flex-base-between gap-[40px] flex-wrap">
-        {getInfo.map((e, i) => {
-          if (i > 14 && viewmore === false) {
-            return;
-          } else if (i > 14 && viewmore === true) {
-            return (
-              <Link
-                key={i}
-                href={{
-                  pathname: "/interview/[detail]",
-                  query: { detail: e.index },
-                }}
-              >
-                <InterviewCard
+      <div className="w-full flex-base-start gap-[40px] flex-wrap">
+        {Array.isArray(getInfo) &&
+          getInfo.map((e, i) => {
+            if (i > 14 && viewmore === false) {
+              return;
+            } else if (i > 14 && viewmore === true) {
+              return (
+                <CallInterviewCard
                   key={i}
-                  img={e.img}
+                  interviewId={e.interviewId}
+                  generation={e.generation}
+                  OneLineContent={e.OneLineContent}
+                  imageUrl={e.imageUrl}
                   name={e.name}
                   part={e.part}
                 />
-              </Link>
-            );
-          } else {
-            return (
-              <Link
-                key={i}
-                href={{
-                  pathname: "/interview/[detail]",
-                  query: { detail: e.index },
-                }}
-              >
-                <InterviewCard
+              );
+            } else {
+              return (
+                <CallInterviewCard
                   key={i}
-                  img={e.img}
+                  interviewId={e.interviewId}
+                  generation={e.generation}
+                  OneLineContent={e.OneLineContent}
+                  imageUrl={e.imageUrl}
                   name={e.name}
                   part={e.part}
                 />
-              </Link>
-            );
-          }
-        })}
+              );
+            }
+          })}
       </div>
       <div className=" mt-[120px] ">
         <ViewMoreButton onClick={() => setViewmore(!viewmore)}>

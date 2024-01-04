@@ -2,7 +2,12 @@ import { PartText } from "@/pages/part/[partintro]";
 import React, { useState } from "react";
 import ToggleButton from "@/svg/toggle.svg";
 
-const ToggleInfo = () => {
+type Props = {
+  partQuestions: Array<string>;
+  commonQuestions: Array<string>;
+};
+
+const ToggleInfo = (props: Props) => {
   const [utilToggle, setUtilToggle] = useState<boolean>(false);
   const [partToggle, setPartToggle] = useState<boolean>(false);
   return (
@@ -19,7 +24,11 @@ const ToggleInfo = () => {
         <PartText className="title mb-5">
           공통문항
           {utilToggle ? (
-            <div className=" mt-2">어떻게 되는거?(유틸별)</div>
+            <div className=" mt-2">
+              {props.commonQuestions.map((e, i) => (
+                <div key={i}>{e}</div>
+              ))}
+            </div>
           ) : null}
         </PartText>
       </div>
@@ -34,7 +43,11 @@ const ToggleInfo = () => {
         <PartText className="title">
           파트별 문항
           {partToggle ? (
-            <div className=" mt-2">어떻게 되는거?(파트별)</div>
+            <div className=" mt-2">
+              {props.partQuestions.map((e, i) => (
+                <div key={i}>{e}</div>
+              ))}
+            </div>
           ) : null}
         </PartText>
       </div>

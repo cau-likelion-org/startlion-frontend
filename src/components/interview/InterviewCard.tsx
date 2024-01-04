@@ -1,23 +1,21 @@
-import { InterviewCardProp } from "@/store/testData";
 import Image from "next/image";
 import React from "react";
 import { styled } from "twin.macro";
+import design from "@/img/part/design.png";
+import { TotalInterviewInfo } from "@/store/type";
 
-const InterviewCard = (props: InterviewCardProp) => {
+const InterviewCard = (props: TotalInterviewInfo) => {
   return (
     <CardWrapper>
       <div>
         <div className="w-[320px] h-[320px] relative mb-[13.5px]">
           <Image
-            src={props.img}
+            src={props.imageUrl === null ? design : props.imageUrl}
             alt="인터뷰 메인 이미지"
             layout="fill"
-            objectFit="cover"
+            objectFit="fill"
           />
-          <ImgTextShow>
-            &quot; 멋사 최고~
-            <br /> 넘 재밌고 유익해용 &quot;
-          </ImgTextShow>
+          <ImgTextShow>&quot; {props.OneLineContent} &quot;</ImgTextShow>
         </div>
         <div className="textline">
           <div>{props.name}</div>

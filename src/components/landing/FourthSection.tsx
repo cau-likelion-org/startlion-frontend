@@ -25,7 +25,7 @@ const FourthSection = () => {
               적당할 것 가탕요. 우헤헤헤
             </TextPart>
           </PartButton>
-          <PartButton onClick={() => router.push("/part/DESIGN")}>
+          <PartButton onClick={() => router.push("/part/DE")}>
             <Image src={Design} alt="DesignLion" width={464} height={92} />
             <TextPart>
               <div className="line"></div>

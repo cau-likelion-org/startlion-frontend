@@ -13,7 +13,7 @@ const NavBar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 80px 20px 60px;
-  height: 24px;
+  height: 64px;
   background-color: white;
   position: sticky;
   top: 0;

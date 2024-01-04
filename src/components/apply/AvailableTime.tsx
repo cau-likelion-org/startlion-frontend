@@ -17,17 +17,24 @@ const AvailableTime = () => {
     const newDay =
       dayNumber === "firstDay"
         ? [...availableTime.firstDay]
-        : [...availableTime.secondDay];
+        : dayNumber === "secondDay"
+        ? [...availableTime.secondDay]
+        : [...availableTime.thirdDay];
     newDay[index] = dayState === 0 ? 1 : 0;
     if (dayNumber === "firstDay") {
       setAvailableTime({
         ...availableTime,
         firstDay: newDay,
       });
-    } else {
+    } else if (dayNumber === "secondDay") {
       setAvailableTime({
         ...availableTime,
         secondDay: newDay,
+      });
+    } else {
+      setAvailableTime({
+        ...availableTime,
+        thirdDay: newDay,
       });
     }
     console.log(availableTime.firstDay.join(" "));
@@ -48,12 +55,28 @@ const AvailableTime = () => {
             {TotalApplyTimeArray[i]}
           </TimeButton>
         ))}
-        <div className="my-8 bg-black h-[1px] w-full"></div>
+      </div>
+      <div className="my-8 bg-black h-[1px] w-full"></div>
+      <div className="mb-4">2월 26일 일요일</div>
+      <div className="flex items-center justify-start gap-x-4 gap-y-6 flex-wrap">
         {availableTime.secondDay.map((e, i) => (
           <TimeButton
             key={i}
             className={e === 0 ? "" : "selected"}
             onClick={() => DayControlFunc(i, e, "secondDay")}
+          >
+            {TotalApplyTimeArray[i]}
+          </TimeButton>
+        ))}
+      </div>
+      <div className="my-8 bg-black h-[1px] w-full"></div>
+      <div className="mb-4">2월 27일 월요일</div>
+      <div className="flex items-center justify-start gap-x-4 gap-y-6 flex-wrap">
+        {availableTime.thirdDay.map((e, i) => (
+          <TimeButton
+            key={i}
+            className={e === 0 ? "" : "selected"}
+            onClick={() => DayControlFunc(i, e, "thirdDay")}
           >
             {TotalApplyTimeArray[i]}
           </TimeButton>

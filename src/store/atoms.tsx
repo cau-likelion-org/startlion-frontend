@@ -30,6 +30,7 @@ export const AvailableTimeAtom = atom<KeyPair<Array<number>>>({
   default: {
     firstDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     secondDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    thirdDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   },
 });
 

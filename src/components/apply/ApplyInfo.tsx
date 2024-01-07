@@ -2,7 +2,6 @@ import { ApplyPartAtom } from "@/store/atoms";
 import React, { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import tw, { styled } from "twin.macro";
-import Toggle from "@/svg/toggle.svg";
 import ApplySemester from "./ApplySemester";
 
 const ApplyInfo = () => {

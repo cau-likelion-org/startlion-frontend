@@ -1,6 +1,6 @@
 import { useTextForm } from "@/hooks/apply/useTextForm";
 import { SecondApplyAtom, ThirdApplyAtom } from "@/store/atoms";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "twin.macro";
 
@@ -13,13 +13,15 @@ const ApplyTextAreaBox = ({
   num: number;
   pageNum: number;
 }) => {
-  const [data, onChangeData] = useTextForm();
+  const [data, onChangeData] = useTextForm({ pageNum, num });
   const [secondData, setSecondData] = useRecoilState(SecondApplyAtom);
   const [thirdData, setThirdData] = useRecoilState(ThirdApplyAtom);
+  const [textlength, setTextLength] = useState(500);
   useEffect(() => {
     if (pageNum === 2) {
       switch (num) {
         case 0:
+          setTextLength(700);
           setSecondData({
             ...secondData,
             commonAnswer1: data,
@@ -84,6 +86,9 @@ const ApplyTextAreaBox = ({
       <div className="mt-20">
         <div className="text-[20px] font-bold mb-2">{title}</div>
         <ApplyTextArea value={data} onChange={onChangeData} />
+        <div>
+          {data.length} / {textlength}
+        </div>
       </div>
     </>
   );

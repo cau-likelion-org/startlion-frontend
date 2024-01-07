@@ -1,3 +1,21 @@
+export interface KeyPair<V> {
+  [key: string]: V;
+}
+
+type ApplicationType = {
+  applicationId: number;
+  generationId: number;
+  name: string;
+  part: string;
+  status: string;
+};
+
+export type MypageType = {
+  isSubmitted: string;
+  applicationList: Array<ApplicationType>;
+  defaultApplicationList: Array<ApplicationType>;
+};
+
 export type PartInfo = {
   partName: string;
   partContent: string;
@@ -45,3 +63,33 @@ export interface InterviewInfoProps {
 export interface TotalInterviewInfoProps {
   totalInterviewInfo: TotalInterviewInfo;
 }
+
+export type FirstPageType = {
+  isAgreed: boolean;
+  name: string;
+  gender: string;
+  studentNum: number;
+  major: string;
+  multiMajor: string;
+  semester: string;
+  phone: string;
+  email: string;
+  pathToKnows: string;
+  part: string;
+};
+
+export type SecondPageType = {
+  commonAnswer1: string;
+  commonAnswer2: string;
+  commonAnswer3: string;
+  commonAnswer4: string;
+  commonAnswer5: string;
+};
+
+export type ThirdPageType = {
+  partAnswer1?: string;
+  partAnswer2?: string;
+  partAnswer3?: string;
+  partAnswer4?: string;
+  portfolio: string;
+};

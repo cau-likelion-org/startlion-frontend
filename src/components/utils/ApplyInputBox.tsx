@@ -1,6 +1,6 @@
 import { useInputForm } from "@/hooks/apply/useInputForm";
 import { FirstApplyAtom } from "@/store/atoms";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "twin.macro";
 
@@ -11,7 +11,7 @@ const ApplyInputBox = ({
   name: string;
   className?: string;
 }) => {
-  const [data, onChangeData] = useInputForm({ name });
+  const [data, onChangeData, errorMessage] = useInputForm({ name });
   const [firstData, setFirstData] = useRecoilState(FirstApplyAtom);
   useEffect(() => {
     switch (name) {
@@ -59,19 +59,40 @@ const ApplyInputBox = ({
     </>
   ) : (
     <>
-      <ApplyInput
-        value={data}
-        onChange={onChangeData}
-        placeholder={
-          name === "email"
-            ? "ex) abcd@naver.com"
-            : name === "phone"
-            ? "ex) 010-1234-1234"
-            : name === "student"
-            ? "ex) 숫자외에 다른 것을 입력하지마세요."
-            : ""
-        }
-      />
+      {errorMessage === "" ? (
+        <ApplyInput
+          value={data}
+          onChange={onChangeData}
+          type="text"
+          placeholder={
+            name === "email"
+              ? "ex) abcd@naver.com"
+              : name === "phone"
+              ? "ex) 010-1234-1234"
+              : name === "student"
+              ? "ex) 숫자외에 다른 것을 입력하지마세요."
+              : ""
+          }
+        />
+      ) : (
+        <ApplyInput
+          className="error"
+          value={data}
+          onChange={onChangeData}
+          type="text"
+          placeholder={
+            name === "email"
+              ? "ex) abcd@naver.com"
+              : name === "phone"
+              ? "ex) 010-1234-1234"
+              : name === "student"
+              ? "ex) 숫자외에 다른 것을 입력하지마세요."
+              : ""
+          }
+        />
+      )}
+      {/* <div></div>
+      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>} */}
     </>
   );
 };
@@ -89,5 +110,8 @@ const ApplyInput = styled.input`
   }
   &.way {
     width: 50vw;
+  }
+  &.error {
+    border: 2px solid red;
   }
 `;

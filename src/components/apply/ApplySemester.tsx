@@ -1,11 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styled } from "twin.macro";
 import { ApplyInfoText } from "./ApplyInfo";
 import Toggle from "@/svg/toggle.svg";
+import { useRecoilState } from "recoil";
+import { FirstApplyAtom } from "@/store/atoms";
 
 const ApplySemester = () => {
   const [modal, setModal] = useState<Boolean>(false);
   const [semester, setSemester] = useState<string>("해당학기");
+  const [firstData, setFirstData] = useRecoilState(FirstApplyAtom);
   const semesterOption = [
     "1학년 1학기",
     "1학년 2학기",
@@ -19,6 +22,19 @@ const ApplySemester = () => {
     "휴학 예정",
   ];
   const modalRef = useRef<HTMLDivElement>(null);
+  const changeSemesterFunc = (name: string) => {
+    setModal(!modal);
+    setSemester(name);
+    setFirstData({
+      ...firstData,
+      semester: name,
+    });
+  };
+  useEffect(() => {
+    if (firstData.semester !== "") {
+      setSemester(firstData.semester);
+    }
+  }, []);
   return (
     <div className="gap-6 flex mb-2 relative">
       <ApplyInfoText>해당 학기*</ApplyInfoText>
@@ -44,8 +60,7 @@ const ApplySemester = () => {
               <div
                 key={i}
                 onClick={() => {
-                  setModal(!modal);
-                  setSemester(e);
+                  changeSemesterFunc(e);
                 }}
                 className="inner"
               >

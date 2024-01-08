@@ -2,6 +2,10 @@ export interface KeyPair<V> {
   [key: string]: V;
 }
 
+export interface KeyPairDual<V, U> {
+  [key: string]: V | U;
+}
+
 type ApplicationType = {
   applicationId: number;
   generationId: number;
@@ -68,7 +72,7 @@ export type FirstPageType = {
   isAgreed: boolean;
   name: string;
   gender: string;
-  studentNum: number;
+  studentNum: number | null;
   major: string;
   multiMajor: string;
   semester: string;

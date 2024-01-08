@@ -3,6 +3,7 @@ import { recoilPersist } from "recoil-persist";
 import {
   FirstPageType,
   KeyPair,
+  KeyPairDual,
   MypageType,
   SecondPageType,
   ThirdPageType,
@@ -18,11 +19,6 @@ export const ApplyPageCheckAtom = atom<string>({
   default: "apply",
 });
 
-export const ApplyPartAtom = atom<string>({
-  key: "applyPartAtom",
-  default: "",
-});
-
 // interface AvailableTimeArray {
 //   firstDay: Array<number>;
 //   secondDay: Array<number>;
@@ -34,7 +30,7 @@ export const FirstApplyAtom = atom<FirstPageType>({
     isAgreed: false,
     name: "",
     gender: "",
-    studentNum: 0,
+    studentNum: null,
     major: "",
     multiMajor: "",
     semester: "",
@@ -72,6 +68,15 @@ export const AvailableTimeAtom = atom<KeyPair<Array<number>>>({
   },
 });
 
+export const LastApplyAtom = atom<KeyPairDual<boolean, Array<number>>>({
+  key: "lastPageAtom",
+  default: {
+    firstDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    secondDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    thirdDay: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    lastCheck: false,
+  },
+});
 export interface IUserInfo {
   accessToken: string;
   refreshToken: string;

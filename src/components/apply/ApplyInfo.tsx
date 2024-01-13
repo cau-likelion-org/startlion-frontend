@@ -105,11 +105,11 @@ const ApplyInfo = () => {
                     value={e}
                     id={e}
                     className="hidden"
-                    checked={firstData.pathToKnows === e}
+                    checked={firstData.pathToKnow === e}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       setFirstData({
                         ...firstData,
-                        pathToKnows: e.target.value,
+                        pathToKnow: e.target.value,
                       });
                     }}
                   />
@@ -127,11 +127,11 @@ const ApplyInfo = () => {
                       value={e}
                       id={e}
                       className="hidden"
-                      checked={firstData.pathToKnows === e}
+                      checked={firstData.pathToKnow === e}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setFirstData({
                           ...firstData,
-                          pathToKnows: e.target.value,
+                          pathToKnow: e.target.value,
                         });
                       }}
                     />

@@ -51,11 +51,23 @@ const ApplyInputBox = ({
           email: data,
         });
         break;
+      case "path":
+        setFirstData({
+          ...firstData,
+          etcDetail: data,
+        });
+        break;
     }
+    console.log(firstData);
   }, [data]);
   return className === "way" ? (
     <>
-      <ApplyInput className="way" disabled={firstData.pathToKnows !== "기타"} />
+      <ApplyInput
+        className="way"
+        disabled={firstData.pathToKnow !== "기타"}
+        value={data}
+        onChange={onChangeData}
+      />
     </>
   ) : (
     <>

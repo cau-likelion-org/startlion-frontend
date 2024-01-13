@@ -78,7 +78,8 @@ export type FirstPageType = {
   semester: string;
   phone: string;
   email: string;
-  pathToKnows: string;
+  pathToKnow: string;
+  etcDetail: string;
   part: string;
 };
 

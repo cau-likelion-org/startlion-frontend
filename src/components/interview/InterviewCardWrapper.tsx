@@ -11,7 +11,7 @@ const InterviewCardWrapper = () => {
     { param: "PM", name: "PM" },
     { param: "FE", name: "FE" },
     { param: "BE", name: "BE" },
-    { param: "DE", name: "DESIGN" },
+    { param: "DESIGN", name: "DESIGN" },
     { param: "DEV", name: "DEV" },
   ];
   const [option, setOption] = useState<string>("ALL");

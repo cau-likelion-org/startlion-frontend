@@ -1,8 +1,9 @@
-import { ApplyPartAtom } from "@/store/atoms";
-import React, { useRef, useState } from "react";
-import { useSetRecoilState } from "recoil";
+import { FirstApplyAtom } from "@/store/atoms";
+import React from "react";
+import { useRecoilState } from "recoil";
 import tw, { styled } from "twin.macro";
-import Toggle from "@/svg/toggle.svg";
+import ApplySemester from "./ApplySemester";
+import ApplyInputBox from "../utils/ApplyInputBox";
 
 const ApplyInfo = () => {
   //아직 onClick을 추가안한 상태
@@ -14,11 +15,19 @@ const ApplyInfo = () => {
     "멋쟁이사자처럼 홈페이지",
     "기타",
   ];
-  const [modal, setModal] = useState<Boolean>(false);
-  const modalRef = useRef<HTMLDivElement>(null);
-  const [semester, setSemester] = useState<string>("해당학기");
 
-  const setApplyPart = useSetRecoilState(ApplyPartAtom);
+  const [firstData, setFirstData] = useRecoilState(FirstApplyAtom);
+  const GenderFunc = (name: string) => {
+    name === "male"
+      ? setFirstData({
+          ...firstData,
+          gender: "male",
+        })
+      : setFirstData({
+          ...firstData,
+          gender: "female",
+        });
+  };
   return (
     <>
       <div className="flex gap-6 mb-6 items-baseline">
@@ -28,7 +37,7 @@ const ApplyInfo = () => {
       <div className="flex-col-base items-start">
         <FlexGap>
           <ApplyInfoText>성함*</ApplyInfoText>
-          <ApplyInput />
+          <ApplyInputBox name="name" />
         </FlexGap>
         <FlexGap>
           <ApplyInfoText>성별*</ApplyInfoText>
@@ -39,6 +48,10 @@ const ApplyInfo = () => {
               value="male"
               id="male"
               className="hidden"
+              checked={firstData.gender === "male"}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                GenderFunc(e.target.value);
+              }}
             />
             <ApplyInputRadio htmlFor="male">남성</ApplyInputRadio>
             <input
@@ -47,74 +60,37 @@ const ApplyInfo = () => {
               value="female"
               className="hidden"
               id="female"
+              checked={firstData.gender === "female"}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                GenderFunc(e.target.value);
+              }}
             />
             <ApplyInputRadio htmlFor="female">여성</ApplyInputRadio>
           </div>
         </FlexGap>
         <FlexGap>
           <ApplyInfoText>학번*</ApplyInfoText>
-          <ApplyInput />
+          <ApplyInputBox name="student" />
         </FlexGap>
         <FlexGap>
           <ApplyInfoText>학과*</ApplyInfoText>
-          <ApplyInput />
+          <ApplyInputBox name="major" />
         </FlexGap>
         <FlexGap>
           <ApplyInfoText>다전공</ApplyInfoText>
-          <ApplyInput />
+          <ApplyInputBox name="multiMajor" />
         </FlexGap>
-        <div className="gap-6 flex mb-2 relative">
-          <ApplyInfoText>해당 학기*</ApplyInfoText>
-          <ApplyInfoSelect
-            onClick={() => {
-              setModal(!modal);
-            }}
-          >
-            <div>
-              {" "}
-              <Toggle
-                style={{
-                  transform: modal ? "rotate(90deg)" : "rotate(0deg)",
-                }}
-              />
-            </div>
-            <div>{semester}</div>
-          </ApplyInfoSelect>
-          {modal ? (
-            <>
-              <MyPostModal ref={modalRef}>
-                <div
-                  onClick={() => {
-                    setModal(!modal);
-                    setSemester("1학기");
-                  }}
-                  className="inner"
-                >
-                  1학기
-                </div>
-                <div
-                  onClick={() => {
-                    setModal(!modal);
-                    setSemester("2학기");
-                  }}
-                  className="inner"
-                >
-                  2학기
-                </div>
-              </MyPostModal>
-            </>
-          ) : null}
-        </div>
+        <ApplySemester />
         <div className="text-[#797979] mb-9 text-right w-full">
           *1학기 기준 해당 학기 선택 바랍니다.
         </div>
         <FlexGap>
           <ApplyInfoText>휴대전화*</ApplyInfoText>
-          <ApplyInput />
+          <ApplyInputBox name="phone" />
         </FlexGap>
         <FlexGap>
           <ApplyInfoText>이메일*</ApplyInfoText>
-          <ApplyInput />
+          <ApplyInputBox name="email" />
         </FlexGap>
         <FlexGap>
           <ApplyInfoText>지원 경로*</ApplyInfoText>
@@ -125,9 +101,17 @@ const ApplyInfo = () => {
                   <input
                     type="radio"
                     name="way"
+                    key={e}
                     value={e}
                     id={e}
                     className="hidden"
+                    checked={firstData.pathToKnow === e}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      setFirstData({
+                        ...firstData,
+                        pathToKnow: e.target.value,
+                      });
+                    }}
                   />
                   <ApplyInputRadio htmlFor={e} className="way">
                     {e}
@@ -139,14 +123,22 @@ const ApplyInfo = () => {
                     <input
                       type="radio"
                       name="way"
+                      key={e}
                       value={e}
                       id={e}
                       className="hidden"
+                      checked={firstData.pathToKnow === e}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setFirstData({
+                          ...firstData,
+                          pathToKnow: e.target.value,
+                        });
+                      }}
                     />
                     <ApplyInputRadio htmlFor={e} className="mr-2.5">
                       {e}
                     </ApplyInputRadio>
-                    <ApplyInput className="way" />
+                    <ApplyInputBox name="path" className="way" />
                   </p>
                 </>
               )
@@ -162,11 +154,17 @@ const ApplyInfo = () => {
                 name="part"
                 value={e}
                 id={e}
+                key={e}
                 className="hidden"
+                checked={firstData.part === e}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setFirstData({
+                    ...firstData,
+                    part: e.target.value,
+                  });
+                }}
               />
-              <ApplyInputRadio htmlFor={e} onClick={() => setApplyPart(e)}>
-                {e}
-              </ApplyInputRadio>
+              <ApplyInputRadio htmlFor={e}>{e}</ApplyInputRadio>
             </>
           ))}
         </FlexGap>
@@ -181,25 +179,11 @@ const FlexGap = tw.div`
     flex gap-6 mb-9
 `;
 
-const ApplyInfoText = styled.div`
+export const ApplyInfoText = styled.div`
   text-align: center;
   font-size: 24px;
   font-weight: 700;
   width: 108px;
-`;
-
-const ApplyInput = styled.input`
-  width: 65vw;
-  height: 42px;
-  border-radius: 8px;
-  background-color: #e8eff8;
-  padding: 0px 12px;
-  :focus {
-    outline: none;
-  }
-  &.way {
-    width: 50vw;
-  }
 `;
 
 const ApplyInputRadio = styled.label`

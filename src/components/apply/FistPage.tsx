@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "twin.macro";
 import Check from "@/svg/apply/check.svg";
 import Uncheck from "@/svg/apply/uncheck.svg";
 import ApplyInfo from "./ApplyInfo";
+import { useRecoilState } from "recoil";
+import { FirstApplyAtom } from "@/store/atoms";
 
 const FistPage = () => {
-  const [check, setCheck] = useState(false);
+  const [data, setData] = useRecoilState(FirstApplyAtom);
   return (
     <div className="w-full pb-20 mb-5 mx-auto">
       <ApplyTextArea />
@@ -13,8 +15,15 @@ const FistPage = () => {
         <div>
           위의 내용을 읽고 이해 했으며 개인정보 이용 및 수집에 동의합니다.
         </div>
-        <button onClick={() => setCheck(!check)}>
-          {check === true ? <Check /> : <Uncheck />}
+        <button
+          onClick={() =>
+            setData({
+              ...data,
+              isAgreed: !data.isAgreed,
+            })
+          }
+        >
+          {data.isAgreed === true ? <Check /> : <Uncheck />}
         </button>
       </div>
       <ApplyInfo />
@@ -33,6 +42,9 @@ export const ApplyTextArea = styled.textarea`
   background-color: #e8eff8;
   font-size: 16px;
   margin-bottom: 24px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   :focus {
     outline: none;
   }

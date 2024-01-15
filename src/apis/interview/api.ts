@@ -8,7 +8,7 @@ export const getInterviewApi = async (name: string) => {
     })
     .catch((error) => {
       if (axios.isAxiosError(error)) {
-        const result = error.response?.data?.detail;
+        const result = error.response?.data?.message;
         return result;
       }
     });

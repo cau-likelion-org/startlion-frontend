@@ -1,16 +1,29 @@
 import axios from "axios";
+import { getAuthAxios } from "../utils/axios";
 
 export const getMypageApi = async (token: string) => {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return await axios
-    .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`)
+  const authAxios = getAuthAxios(token);
+  return await authAxios
+    .get(`/api/users/me`)
     .then((response) => {
-      return response;
+      return response.data;
     })
     .catch((error) => {
       if (axios.isAxiosError(error)) {
-        const result = error.response?.data?.detail;
-        return result;
+        console.log(error);
+        return undefined;
       }
     });
+
+  // return await axiosInstance
+  //   .get(`/api/users/me`)
+  //   .then((response) => {
+  //     return response.data;
+  //   })
+  //   .catch((error) => {
+  //     if (axios.isAxiosError(error)) {
+  //       console.log(error);
+  //       return undefined;
+  //     }
+  //   });
 };

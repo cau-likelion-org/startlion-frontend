@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps<{
   // get params id from the url
   const partInfoName = context.params?.partintro as string;
 
-  const API_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/parts/${partInfoName}`;
+  const API_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/part/${partInfoName}`;
 
   // Fetch data
   const res = await fetch(API_URL);

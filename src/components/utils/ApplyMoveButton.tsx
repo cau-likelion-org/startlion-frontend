@@ -1,11 +1,16 @@
-import { ApplyPageAtom, ApplyPageCheckAtom } from "@/store/atoms";
+import {
+  ApplyPageAtom,
+  ApplyPageCheckAtom,
+  FirstApplyAtom,
+} from "@/store/atoms";
 import React from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { css, styled } from "twin.macro";
 
 const ApplyMoveButton = () => {
   const [pageNum, setPageNum] = useRecoilState(ApplyPageAtom);
   const setCheckPage = useSetRecoilState(ApplyPageCheckAtom);
+  const checkFirstPart = useRecoilValue(FirstApplyAtom);
   const movePrevFunc = (pageNum: number) => {
     if (pageNum === 1) {
       return;
@@ -16,6 +21,10 @@ const ApplyMoveButton = () => {
   const moveNextFunc = (pageNum: number) => {
     if (pageNum === 4) {
       return;
+    } else if (pageNum === 1) {
+      checkFirstPart.part === ""
+        ? alert("파트를 선택해주세요")
+        : setPageNum(pageNum + 1);
     } else {
       setPageNum(pageNum + 1);
     }

@@ -31,7 +31,7 @@ const NavOptionWrapper = styled.div`
 `;
 
 const Nav = () => {
-  const loginUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/login`;
+  const loginUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/sign-in`;
   const userToken = useRecoilValue(userInfoState);
 
   const handleClick = () => {

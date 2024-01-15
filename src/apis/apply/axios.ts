@@ -8,8 +8,9 @@ export const getMyApplyInfoApi = async (
 ) => {
   const authAxios = getAuthAxios(token);
   return await authAxios
-    .get(`/application/${applicationId}?page=${page}`)
+    .get(`/application/${applicationId}/page${page}`)
     .then((response) => {
+      console.log(response);
       return response.data;
     })
     .catch((error) => {

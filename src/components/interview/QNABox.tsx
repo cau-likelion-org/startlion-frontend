@@ -18,8 +18,8 @@ const QNABox = (props: Props) => {
             <div>Q. {e.question}</div>
           </QustionWrpper>
           <AnswerWrapper>
-            <div className="keypoint">{e.boldAnswer}</div>
-            <div>{e.answer}</div>
+            <div className="keypoint">{e.answerTitle}</div>
+            <div>{e.answerContent}</div>
           </AnswerWrapper>
         </div>
       ))}

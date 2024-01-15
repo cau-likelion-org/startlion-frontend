@@ -28,6 +28,7 @@ export type PartInfo = {
   partQuestions: Array<string>;
   curriculumContents: string;
   commonQuestions: Array<string>;
+  curriculumGeneration: number;
 };
 
 export interface PartInfoProps {
@@ -56,8 +57,8 @@ export type TotalInterviewInfo = {
 export type InterviewAnswerProp = {
   interviewAnswerId: number;
   question: string;
-  boldAnswer: string;
-  answer: string;
+  answerTitle: string;
+  answerContent: string;
 };
 
 export interface InterviewInfoProps {

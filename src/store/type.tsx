@@ -50,7 +50,7 @@ export type TotalInterviewInfo = {
   generation: number;
   name: string;
   part: string;
-  OneLineContent: string;
+  oneLineContent: string;
   imageUrl: string | null;
 };
 

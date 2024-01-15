@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "@/store/atoms";
+import useResetAppId from "@/hooks/common/useResetAppId";
 
 const NavBar = styled.div`
   z-index: 10;
@@ -33,6 +34,7 @@ const NavOptionWrapper = styled.div`
 const Nav = () => {
   const loginUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/sign-in`;
   const userToken = useRecoilValue(userInfoState);
+  useResetAppId();
 
   const handleClick = () => {
     window.location.assign(loginUrl);

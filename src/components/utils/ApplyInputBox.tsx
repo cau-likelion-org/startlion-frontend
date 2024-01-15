@@ -65,7 +65,6 @@ const ApplyInputBox = ({
         });
         break;
     }
-    console.log(firstData);
   }, [data]);
   return className === "way" ? (
     <>

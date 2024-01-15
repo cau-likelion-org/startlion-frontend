@@ -15,7 +15,7 @@ const CallInterviewCard = (props: TotalInterviewInfo) => {
       <InterviewCard
         interviewId={props.interviewId}
         generation={props.generation}
-        OneLineContent={props.OneLineContent}
+        oneLineContent={props.oneLineContent}
         imageUrl={props.imageUrl}
         name={props.name}
         part={props.part}

@@ -15,7 +15,7 @@ const InterviewCard = (props: TotalInterviewInfo) => {
             layout="fill"
             objectFit="fill"
           />
-          <ImgTextShow>&quot; {props.OneLineContent} &quot;</ImgTextShow>
+          <ImgTextShow>&quot; {props.oneLineContent} &quot;</ImgTextShow>
         </div>
         <div className="textline">
           <div>{props.name}</div>

@@ -58,7 +58,7 @@ const InterviewCardWrapper = () => {
                   key={i}
                   interviewId={e.interviewId}
                   generation={e.generation}
-                  OneLineContent={e.OneLineContent}
+                  oneLineContent={e.oneLineContent}
                   imageUrl={e.imageUrl}
                   name={e.name}
                   part={e.part}
@@ -70,7 +70,7 @@ const InterviewCardWrapper = () => {
                   key={i}
                   interviewId={e.interviewId}
                   generation={e.generation}
-                  OneLineContent={e.OneLineContent}
+                  oneLineContent={e.oneLineContent}
                   imageUrl={e.imageUrl}
                   name={e.name}
                   part={e.part}

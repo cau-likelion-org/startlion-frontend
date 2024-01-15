@@ -1,6 +1,6 @@
 import { useInputForm } from "@/hooks/apply/useInputForm";
 import { FirstApplyAtom } from "@/store/atoms";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "twin.macro";
 
@@ -22,10 +22,17 @@ const ApplyInputBox = ({
         });
         break;
       case "student":
-        setFirstData({
-          ...firstData,
-          studentNum: parseInt(data),
-        });
+        if (Number.isNaN(parseInt(data))) {
+          setFirstData({
+            ...firstData,
+            studentNum: null,
+          });
+        } else {
+          setFirstData({
+            ...firstData,
+            studentNum: parseInt(data),
+          });
+        }
         break;
       case "major":
         setFirstData({
